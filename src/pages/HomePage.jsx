@@ -21,6 +21,8 @@ import {
   A11y,
 } from "swiper/modules";
 import WhyRentUs from "../components/WhyRentUs/WhyRentUs";
+import TopRatedCars from "../components/TopRatedCars/TopRatedCars";
+import CustomerTestimonials from "../components/CustomerTestimonials/CustomerTestimonials";
 
 const HomePage = () => {
   const items = [car1, car2, car3];
@@ -47,8 +49,9 @@ const HomePage = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-
+      <TopRatedCars></TopRatedCars>
       <WhyRentUs></WhyRentUs>
+      <CustomerTestimonials></CustomerTestimonials>
     </div>
   );
 };
