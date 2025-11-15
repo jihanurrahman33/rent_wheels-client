@@ -23,6 +23,7 @@ import {
 import WhyRentUs from "../components/WhyRentUs/WhyRentUs";
 import TopRatedCars from "../components/TopRatedCars/TopRatedCars";
 import CustomerTestimonials from "../components/CustomerTestimonials/CustomerTestimonials";
+import Banner from "../components/Banner/Banner";
 
 const HomePage = () => {
   const items = [car1, car2, car3];
@@ -49,7 +50,11 @@ const HomePage = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+
       <TopRatedCars></TopRatedCars>
+      <section className="p-8">
+        <Banner></Banner>
+      </section>
       <WhyRentUs></WhyRentUs>
       <CustomerTestimonials></CustomerTestimonials>
     </div>

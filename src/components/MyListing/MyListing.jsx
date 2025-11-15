@@ -8,7 +8,82 @@ const MyListing = () => {
   const [listingData, setListingData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [deletingId, setDeletingId] = useState(null);
+  const [processingId, setProcessingId] = useState(null);
   const [error, setError] = useState(null);
+
+  const handleUpdateStatus = async (car) => {
+    const current = car.carStatus || "available";
+    const newStatus = current === "unavailable" ? "available" : "unavailable";
+    const confirmTitle =
+      newStatus === "available"
+        ? "Mark this car as available?"
+        : "Mark this car as unavailable?";
+    const confirmButtonText =
+      newStatus === "available"
+        ? "Yes, make available"
+        : "Yes, make unavailable";
+    const confirmColor = newStatus === "available" ? "#16a34a" : "#dc2626";
+
+    const confirmed = await Swal.fire({
+      title: confirmTitle,
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText,
+      cancelButtonText: "No",
+      confirmButtonColor: confirmColor,
+    });
+
+    if (!confirmed.isConfirmed) return;
+
+    setProcessingId(car._id);
+    try {
+      const token = user?.accessToken || localStorage.getItem("token");
+      const res = await fetch(
+        `http://localhost:3000/removeBooking/?id=${encodeURIComponent(
+          car._id
+        )}`,
+        {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ carStatus: newStatus }),
+        }
+      );
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body.message || "Failed to update status");
+      }
+
+      const updated = await res.json().catch(() => ({}));
+
+      setListingData((prev) =>
+        prev.map((c) =>
+          c._id === car._id ? { ...c, carStatus: newStatus, ...updated } : c
+        )
+      );
+
+      await Swal.fire({
+        icon: "success",
+        title:
+          newStatus === "available"
+            ? "Car is now available"
+            : "Car set to unavailable",
+        showConfirmButton: false,
+        timer: 1400,
+      });
+    } catch (err) {
+      Swal.fire({
+        icon: "error",
+        title: "Update failed",
+        text: err.message || "An error occurred while updating status.",
+      });
+    } finally {
+      setProcessingId(null);
+    }
+  };
 
   useEffect(() => {
     if (!user?.email) return;
@@ -151,7 +226,7 @@ const MyListing = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {listingData.map((car) => (
             <div
-              key={car._1}
+              key={car._id}
               className="rounded-xl shadow transition hover:shadow-lg overflow-hidden bg-white dark:bg-gray-900 border border-transparent dark:border-gray-800"
             >
               <div className="relative h-48">
@@ -215,12 +290,17 @@ const MyListing = () => {
                   </div>
 
                   <div className="flex gap-2">
-                    <Link
-                      to={`/car-details/${car._id}`}
-                      className="px-3 py-2 rounded-md border border-gray-200 dark:border-gray-700 text-sm text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700"
+                    <button
+                      onClick={() => handleUpdateStatus(car)}
+                      className={`px-3 py-2 rounded-md text-sm text-white ${
+                        processingId === car._id
+                          ? "bg-gray-400"
+                          : "bg-blue-600 hover:bg-blue-700"
+                      }`}
+                      disabled={processingId === car._id}
                     >
-                      View
-                    </Link>
+                      {processingId === car._id ? "Processing..." : "Update"}
+                    </button>
                     <button
                       onClick={() => handleRemove(car._id)}
                       className={`px-3 py-2 rounded-md text-sm text-white ${

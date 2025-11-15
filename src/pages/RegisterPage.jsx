@@ -15,6 +15,11 @@ const RegisterPage = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    const re = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    const isValidPassword = (pw) => {
+      return re.test(pw);
+    };
+
     setError("");
     const { name, email, password } = values;
     if (!name.trim() || !email.trim() || !password) {
@@ -23,6 +28,10 @@ const RegisterPage = () => {
     }
     if (password.length < 6) {
       setError("Password must be at least 6 characters.");
+      return;
+    }
+    if (!isValidPassword(password)) {
+      setError("At least 6 chars, include 1 uppercase and 1 lowercase");
       return;
     }
     setLoading(true);
