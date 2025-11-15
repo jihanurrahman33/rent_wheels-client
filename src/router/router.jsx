@@ -56,18 +56,21 @@ export const router = createBrowserRouter([
         loader: ({ params }) => {
           const token = localStorage.getItem("token");
           console.log(token);
-          return fetch(`http://localhost:3000/car-details/${params.id}`, {
-            headers: {
-              authorization: `Bearer ${token}`,
-              "content-type": "application/json",
-            },
-          });
+          return fetch(
+            `https://rent-wheels-nine.vercel.app/car-details/${params.id}`,
+            {
+              headers: {
+                authorization: `Bearer ${token}`,
+                "content-type": "application/json",
+              },
+            }
+          );
         },
       },
       {
         path: "/all-cars",
         element: <BrowseCars></BrowseCars>,
-        loader: () => fetch("http://localhost:3000/all-cars"),
+        loader: () => fetch("https://rent-wheels-nine.vercel.app/all-cars"),
       },
       {
         path: "/*",

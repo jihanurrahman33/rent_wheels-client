@@ -20,7 +20,7 @@ const MyBookings = () => {
       try {
         const token = user?.accessToken || localStorage.getItem("token");
         const res = await fetch(
-          `http://localhost:3000/my-bookings?email=${encodeURIComponent(
+          `https://rent-wheels-nine.vercel.app/my-bookings?email=${encodeURIComponent(
             user.email
           )}`,
           {
@@ -75,7 +75,7 @@ const MyBookings = () => {
     try {
       const token = user?.accessToken || localStorage.getItem("token");
       const res = await fetch(
-        `http://localhost:3000/removeBooking/?id=${encodeURIComponent(
+        `https://rent-wheels-nine.vercel.app/removeBooking/?id=${encodeURIComponent(
           bookingId
         )}`,
         {

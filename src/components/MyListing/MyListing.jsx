@@ -39,7 +39,7 @@ const MyListing = () => {
     try {
       const token = user?.accessToken || localStorage.getItem("token");
       const res = await fetch(
-        `http://localhost:3000/removeBooking/?id=${encodeURIComponent(
+        `https://rent-wheels-nine.vercel.app/removeBooking/?id=${encodeURIComponent(
           car._id
         )}`,
         {
@@ -94,7 +94,7 @@ const MyListing = () => {
     (async () => {
       try {
         const res = await fetch(
-          `http://localhost:3000/my-listing?email=${encodeURIComponent(
+          `https://rent-wheels-nine.vercel.app/my-listing?email=${encodeURIComponent(
             user.email
           )}`,
           {
@@ -142,13 +142,16 @@ const MyListing = () => {
 
     setDeletingId(id);
     try {
-      const res = await fetch(`http://localhost:3000/cars/${id}`, {
-        method: "DELETE",
-        headers: {
-          authorization: `Bearer ${user.accessToken}`,
-          "content-type": "application/json",
-        },
-      });
+      const res = await fetch(
+        `https://rent-wheels-nine.vercel.app/cars/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${user.accessToken}`,
+            "content-type": "application/json",
+          },
+        }
+      );
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
         throw new Error(body.message || "Delete failed");

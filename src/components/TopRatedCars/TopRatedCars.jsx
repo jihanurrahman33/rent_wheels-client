@@ -55,7 +55,7 @@ const CardSkeleton = () => (
 );
 
 const TopRatedCarsPro = ({
-  apiUrl = "http://localhost:3000/cars",
+  apiUrl = "https://rent-wheels-nine.vercel.app/cars",
   title = "Top Rated Picks",
 }) => {
   const [cars, setCars] = useState([]);

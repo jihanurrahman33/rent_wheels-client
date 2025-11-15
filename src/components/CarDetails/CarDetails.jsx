@@ -31,13 +31,16 @@ const CarDetails = () => {
         return;
       }
 
-      const res = await fetch(`http://localhost:3000/book/?id=${data._id}`, {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await fetch(
+        `https://rent-wheels-nine.vercel.app/book/?id=${data._id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (!res.ok) {
         const errBody = await res.json().catch(() => ({}));

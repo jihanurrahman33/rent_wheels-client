@@ -1,16 +1,95 @@
-# React + Vite
+🚗 Rent Wheels — Car Rental Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern full-stack MERN + Firebase car rental application where users can browse, book, list, and manage cars with a clean UI and secure authentication.
+⭐ Features
+🔐 Authentication (Firebase)
 
-Currently, two official plugins are available:
+Email/Password login & registration
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Google Sign-In
 
-## React Compiler
+Protected routes (PrivateRoute)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+JWT stored securely in localStorage
 
-## Expanding the ESLint configuration
+🚘 Car Management
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Add new cars with images, details, and availability
+
+View personal listings
+
+Update status (available / unavailable)
+
+Delete cars with SweetAlert confirmations
+
+📅 Booking System
+
+Book any available car
+
+Bookings linked to user email
+
+View all bookings (My Bookings)
+
+Complete or cancel booking using unified /removeBooking API
+
+SweetAlert confirmation + success popups
+
+🖼 UI & UX
+
+Fully responsive, modern design (Tailwind + DaisyUI)
+
+Professional components:
+
+Hero Section
+
+Why Rent With Us
+
+Top Rated Cars (API-powered)
+
+Customer Testimonials
+
+Extra Sections (Trending Cars, Safety Features, etc.)
+
+Dark mode support
+
+Animated modals for profile info
+
+Styled car cards + gradients + hover effects
+
+📦 Backend (Node + Express + MongoDB)
+
+Secure CRUD APIs
+
+JWT middleware
+
+Car listing routes
+
+Booking routes
+
+Update status & remove booking routes
+
+Pagination-ready car fetching
+📁 Tech Stack
+Frontend
+
+React + React Router
+
+Tailwind CSS + DaisyUI
+
+SweetAlert2
+
+Firebase Auth
+
+Custom Reusable Components
+
+Backend
+
+Node.js
+
+Express.js
+
+MongoDB + Mongoose
+
+JWT Auth
+
+Middleware validation
