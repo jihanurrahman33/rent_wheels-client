@@ -6,10 +6,9 @@ import car2 from "../assets/car2.jpg";
 import car3 from "../assets/car3.jpeg";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-// IMPORTANT: import modules from /swiper/modules for v10+
+
 import { Navigation } from "swiper/modules";
 
-// Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import {
