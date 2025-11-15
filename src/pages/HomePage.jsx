@@ -20,6 +20,7 @@ import {
   Virtual,
   A11y,
 } from "swiper/modules";
+import WhyRentUs from "../components/WhyRentUs/WhyRentUs";
 
 const HomePage = () => {
   const items = [car1, car2, car3];
@@ -46,6 +47,8 @@ const HomePage = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      <WhyRentUs></WhyRentUs>
     </div>
   );
 };

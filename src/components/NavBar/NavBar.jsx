@@ -116,10 +116,6 @@ const NavBar = () => {
                 </span>
                 <span className="text-xs text-gray-500">{user.email}</span>
               </div>
-
-              <button onClick={handleLogout} className="btn btn-outline btn-sm">
-                Logout
-              </button>
             </div>
           ) : (
             <div className="flex items-center gap-2">

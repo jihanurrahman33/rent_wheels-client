@@ -10,6 +10,7 @@ import MyListing from "../components/MyListing/MyListing";
 import BrowseCars from "../components/BrowseCars/BrowseCars";
 import CarDetails from "../components/CarDetails/CarDetails";
 import MyBookings from "../components/MyBookings/MyBookings";
+import ErorrPage from "../pages/ErorrPage";
 
 export const router = createBrowserRouter([
   {
@@ -68,7 +69,15 @@ export const router = createBrowserRouter([
         element: <BrowseCars></BrowseCars>,
         loader: () => fetch("http://localhost:3000/all-cars"),
       },
+      {
+        path: "/*",
+        element: <ErorrPage></ErorrPage>,
+      },
     ],
+  },
+  {
+    path: "/*",
+    element: <ErorrPage></ErorrPage>,
   },
   {
     path: "/",
@@ -81,6 +90,10 @@ export const router = createBrowserRouter([
       {
         path: "/auth/login",
         element: <LoginPage></LoginPage>,
+      },
+      {
+        path: "/*",
+        element: <ErorrPage></ErorrPage>,
       },
     ],
   },
