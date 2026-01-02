@@ -1,6 +1,7 @@
 import React, { useState, use } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
+import { FaGoogle, FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 
 const RegisterPage = () => {
   const { registerUser, googleSignin, setUser } = use(AuthContext);
@@ -31,7 +32,7 @@ const RegisterPage = () => {
       return;
     }
     if (!isValidPassword(password)) {
-      setError("At least 6 chars, include 1 uppercase and 1 lowercase");
+      setError("Password must have 1 uppercase & 1 lowercase letter.");
       return;
     }
     setLoading(true);
@@ -64,165 +65,171 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
-      <div className="w-full max-w-4xl bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
-        <div className="hidden md:flex flex-col justify-center items-start p-10 bg-gradient-to-tr from-blue-600 to-indigo-600">
-          <h2 className="text-3xl font-extrabold text-white mb-2">
-            Create your account
-          </h2>
-          <p className="text-white/90 mb-6">
-            Join RentWheels — list your car or book trusted local rentals in
-            minutes.
-          </p>
-          <ul className="text-white text-sm space-y-3">
-            <li>✔ Fast listings</li>
-            <li>✔ Secure payments</li>
-            <li>✔ Verified providers</li>
-          </ul>
-          <div className="mt-8">
-            <div className="text-xs text-white/80">Already registered?</div>
-            <Link
-              to="/auth/login"
-              className="inline-block mt-3 px-4 py-2 rounded-md bg-white/20 text-white text-sm border border-white/20"
-            >
-              Sign in
-            </Link>
-          </div>
+    <div className="min-h-screen flex items-center justify-center bg-base-200 dark:bg-black px-4 py-8 relative overflow-hidden">
+       {/* Background Ambience */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-600/20 dark:bg-indigo-900/10 rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/20 dark:bg-primary/10 rounded-full blur-[120px] -translate-x-1/2 translate-y-1/2 pointer-events-none" />
+
+      <div className="bg-white dark:bg-slate-900/50 backdrop-blur-2xl w-full max-w-5xl rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 border border-white/20 dark:border-white/5">
+        
+        {/* Left Side - Visual */}
+        <div className="relative hidden lg:flex flex-col justify-between p-12 bg-black overflow-hidden group">
+            <div className="absolute inset-0 z-0">
+                <img 
+                    src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+                    alt="Premium Lifestyle" 
+                    className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000"
+                />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+            </div>
+
+            <div className="relative z-10 mt-auto">
+                 <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center mb-6 border border-white/20">
+                    <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                 </div>
+                <h2 className="text-4xl font-display font-bold text-white mb-4 leading-tight">
+                  Join the <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">Elite League.</span>
+                </h2>
+                <ul className="space-y-3 text-gray-300">
+                    <li className="flex items-center gap-3">
+                        <span className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-xs">✓</span>
+                        <span>Exclusive access to premium fleet</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                        <span className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-xs">✓</span>
+                        <span>Preferred pricing & 24/7 support</span>
+                    </li>
+                     <li className="flex items-center gap-3">
+                        <span className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-xs">✓</span>
+                        <span>Instant booking confirmation</span>
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <form onSubmit={handleRegister} className="p-6 md:p-10">
-          <div className="mb-4 text-center md:text-left">
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
-              Register
+        {/* Right Side - Form */}
+        <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+          <div className="mb-6">
+            <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
+              Create Account
             </h3>
-            <p className="text-sm text-gray-500 dark:text-gray-300 mt-1">
-              Create an account to start listing or booking cars.
+            <p className="text-slate-500 dark:text-slate-400">
+              Start your journey with RentWheels today.
             </p>
           </div>
 
           {error && (
-            <div className="mb-4 text-sm text-red-600 bg-red-50 dark:bg-red-900/30 p-3 rounded">
-              {error}
+            <div className="alert alert-error mb-6 rounded-xl text-sm font-medium shadow-sm bg-red-50 text-red-600 border border-red-200 dark:bg-red-900/20 dark:border-red-800 dark:text-red-400">
+             <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+              <span>{error}</span>
             </div>
           )}
 
-          <div className="space-y-4">
-            <div>
-              <label className="block text-xs font-medium text-gray-700 dark:text-gray-200 mb-1">
-                Full name
+          <form onSubmit={handleRegister} className="space-y-5">
+            <div className="form-control">
+              <label className="label text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
+                Full Name
               </label>
-              <input
-                name="name"
-                value={values.name}
-                onChange={handleChange}
-                className="w-full rounded-lg border border-gray-200 dark:border-gray-700 px-3 py-2 bg-white dark:bg-gray-900 text-sm outline-none focus:ring-2 focus:ring-blue-300"
-                placeholder="Your full name"
-                required
-              />
+              <div className="relative group">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <FaUser className="text-slate-400 group-focus-within:text-primary transition-colors" />
+                </div>
+                <input
+                  name="name"
+                  value={values.name}
+                  onChange={handleChange}
+                  className="input input-lg w-full pl-11 bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-xl transition-all dark:text-white"
+                  placeholder="John Doe"
+                  required
+                />
+              </div>
             </div>
 
-            <div>
-              <label className="block text-xs font-medium text-gray-700 dark:text-gray-200 mb-1">
-                Email
+            <div className="form-control">
+              <label className="label text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
+                Email Address
               </label>
-              <input
-                name="email"
-                type="email"
-                value={values.email}
-                onChange={handleChange}
-                className="w-full rounded-lg border border-gray-200 dark:border-gray-700 px-3 py-2 bg-white dark:bg-gray-900 text-sm outline-none focus:ring-2 focus:ring-blue-300"
-                placeholder="you@example.com"
-                required
-              />
+              <div className="relative group">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                   <FaEnvelope className="text-slate-400 group-focus-within:text-primary transition-colors" />
+                </div>
+                <input
+                  name="email"
+                  type="email"
+                  value={values.email}
+                  onChange={handleChange}
+                  className="input input-lg w-full pl-11 bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-xl transition-all dark:text-white"
+                  placeholder="name@example.com"
+                  required
+                />
+              </div>
             </div>
 
-            <div>
-              <label className="block text-xs font-medium text-gray-700 dark:text-gray-200 mb-1">
+            <div className="form-control">
+              <label className="label text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
                 Password
               </label>
-              <input
-                name="password"
-                type="password"
-                value={values.password}
-                onChange={handleChange}
-                className="w-full rounded-lg border border-gray-200 dark:border-gray-700 px-3 py-2 bg-white dark:bg-gray-900 text-sm outline-none focus:ring-2 focus:ring-blue-300"
-                placeholder="Minimum 6 characters"
-                required
-              />
+              <div className="relative group">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                   <FaLock className="text-slate-400 group-focus-within:text-primary transition-colors" />
+                </div>
+                <input
+                  name="password"
+                  type="password"
+                  value={values.password}
+                  onChange={handleChange}
+                  className="input input-lg w-full pl-11 bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-xl transition-all dark:text-white"
+                  placeholder="Min 6 chars, 1 Upper, 1 Lower"
+                  required
+                />
+              </div>
             </div>
 
             <button
               type="submit"
-              className="w-full py-2 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium shadow hover:opacity-95 disabled:opacity-60"
+              className="btn btn-primary btn-lg w-full rounded-xl font-bold text-white shadow-lg shadow-primary/30 hover:scale-[1.02] transition-transform mt-2"
               disabled={loading}
             >
-              {loading ? "Creating account..." : "Create account"}
+              {loading ? (
+                <span className="loading loading-spinner loading-md" />
+              ) : (
+                "Create Account"
+              )}
             </button>
+          </form>
 
-            <div className="flex items-center justify-center gap-3 text-sm text-gray-400">
-              <span className="h-px w-16 bg-gray-200 dark:bg-gray-700 inline-block"></span>
-              <span>OR</span>
-              <span className="h-px w-16 bg-gray-200 dark:bg-gray-700 inline-block"></span>
+          <div className="relative my-8">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-slate-200 dark:border-slate-700"></div>
             </div>
-
-            <button
-              onClick={handleGoogle}
-              type="button"
-              disabled={loading}
-              className="
-    btn w-full 
-    bg-white text-black 
-    border border-gray-300 
-    hover:bg-gray-100 
-    dark:bg-gray-800 dark:text-white 
-    dark:border-gray-600 
-    dark:hover:bg-gray-700
-  "
-            >
-              <svg
-                aria-label="Google logo"
-                width="18"
-                height="18"
-                viewBox="0 0 512 512"
-                xmlns="http://www.w3.org/2000/svg"
-                className="mr-2"
-              >
-                <g>
-                  <path d="m0 0H512V512H0" fill="#fff"></path>
-                  <path
-                    fill="#34a853"
-                    d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
-                  ></path>
-                  <path
-                    fill="#4285f4"
-                    d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
-                  ></path>
-                  <path
-                    fill="#fbbc02"
-                    d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
-                  ></path>
-                  <path
-                    fill="#ea4335"
-                    d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
-                  ></path>
-                </g>
-              </svg>
-              Continue with Google
-            </button>
-
-            <p className="text-xs text-center text-gray-500 mt-1">
-              By creating an account you agree to our{" "}
-              <Link to="/terms" className="text-blue-600 underline">
-                Terms
-              </Link>{" "}
-              and{" "}
-              <Link to="/privacy" className="text-blue-600 underline">
-                Privacy Policy
-              </Link>
-              .
-            </p>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-4 bg-white dark:bg-[#0f172a] text-slate-500">Or continue with</span>
+            </div>
           </div>
-        </form>
+
+          <button
+            onClick={handleGoogle}
+            disabled={loading}
+           className="btn btn-lg btn-outline w-full rounded-xl border-slate-200 dark:border-slate-700 text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-white/5 hover:border-slate-300 transition-all normal-case font-medium relative overflow-hidden group"
+          >
+             <div className="flex items-center gap-3 relative z-10">
+                <FaGoogle className="text-xl text-red-500 group-hover:scale-110 transition-transform" />
+                <span>Sign up with Google</span>
+             </div>
+          </button>
+
+          <p className="text-center text-sm mt-8 text-slate-600 dark:text-slate-400">
+            Already have an account?{" "}
+            <Link
+              to="/auth/login"
+              className="text-primary font-bold hover:text-primary-focus transition-colors"
+            >
+              Sign In
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

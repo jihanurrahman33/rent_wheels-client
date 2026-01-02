@@ -10,6 +10,7 @@ import MyListing from "../components/MyListing/MyListing";
 import BrowseCars from "../components/BrowseCars/BrowseCars";
 import CarDetails from "../components/CarDetails/CarDetails";
 import MyBookings from "../components/MyBookings/MyBookings";
+import ProfilePage from "../pages/ProfilePage";
 import ErorrPage from "../pages/ErorrPage";
 
 export const router = createBrowserRouter([
@@ -47,30 +48,26 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <ProfilePage></ProfilePage>
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/car-details/:id",
         element: (
           <PrivateRoute>
             <CarDetails></CarDetails>
           </PrivateRoute>
         ),
-        loader: ({ params }) => {
-          const token = localStorage.getItem("token");
-          console.log(token);
-          return fetch(
-            `https://rent-wheels-nine.vercel.app/car-details/${params.id}`,
-            {
-              headers: {
-                authorization: `Bearer ${token}`,
-                "content-type": "application/json",
-              },
-            }
-          );
-        },
+
       },
       {
         path: "/all-cars",
         element: <BrowseCars></BrowseCars>,
-        loader: () => fetch("https://rent-wheels-nine.vercel.app/all-cars"),
+
       },
       {
         path: "/*",

@@ -11,8 +11,11 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
+    "@tanstack/react-query": "^5.90.16",
+    "axios": "^1.13.2",
     "embla-carousel-react": "^8.6.0",
     "firebase": "^12.5.0",
+    "framer-motion": "^12.23.26",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-icons": "^5.5.0",
