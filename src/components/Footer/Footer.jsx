@@ -57,9 +57,9 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               {[
                 { name: "Browse Fleet", path: "/all-cars" },
-                { name: "Latest Deals", path: "/" },
+                { name: "Latest Deals", path: "/all-cars" },
                 { name: "List Your Car", path: "/add-car" },
-                { name: "How It Works", path: "/" },
+                { name: "How It Works", path: "/#how-it-works" },
               ].map((link) => (
                 <li key={link.name}>
                   <Link
@@ -81,8 +81,8 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               {[
                 { name: "Help Center", path: "/" },
-                { name: "Terms of Service", path: "/terms" },
-                { name: "Privacy Policy", path: "/privacy" },
+                { name: "Terms of Service", path: "/" },
+                { name: "Privacy Policy", path: "/" },
                 { name: "Contact Us", path: "mailto:support@rentwheels.com" },
               ].map((link) => (
                 <li key={link.name}>
