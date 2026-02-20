@@ -82,16 +82,16 @@ const TopRatedCars = ({
              <span className="inline-block py-1 px-3 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-widest uppercase">
                 Exclusive Collection
              </span>
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-900 dark:text-white">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-base-content">
               {title}
             </h2>
-            <p className="text-slate-500 dark:text-slate-400 max-w-lg text-lg leading-relaxed">
+            <p className="text-base-content/70 max-w-lg text-lg leading-relaxed">
               Explore our highest-rated vehicles, curated for comfort, performance, and style.
             </p>
           </div>
 
           <div className="flex items-center gap-4">
-            <Link to="/all-cars" className="hidden md:flex items-center gap-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors mr-4 group">
+            <Link to="/all-cars" className="hidden md:flex items-center gap-2 text-sm font-bold text-base-content/80 hover:text-primary transition-colors mr-4 group">
                View All Fleet 
                <FaArrowRight className="transform transition-transform group-hover:translate-x-1" />
             </Link>
@@ -100,7 +100,7 @@ const TopRatedCars = ({
                <button
                   onClick={prev}
                   disabled={focusedIndex === 0}
-                  className="w-12 h-12 flex items-center justify-center rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 hover:bg-primary hover:border-primary hover:text-white dark:hover:bg-primary text-slate-600 dark:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-sm"
+                  className="w-12 h-12 flex items-center justify-center rounded-full border border-base-content/10 bg-base-100 hover:bg-primary hover:border-primary hover:text-primary-content text-base-content disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-sm"
                   aria-label="Previous"
                >
                   <FaChevronLeft className="text-lg" />
@@ -108,7 +108,7 @@ const TopRatedCars = ({
                <button
                   onClick={next}
                   disabled={focusedIndex === cars.length - 1}
-                  className="w-12 h-12 flex items-center justify-center rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 hover:bg-primary hover:border-primary hover:text-white dark:hover:bg-primary text-slate-600 dark:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-sm"
+                  className="w-12 h-12 flex items-center justify-center rounded-full border border-base-content/10 bg-base-100 hover:bg-primary hover:border-primary hover:text-primary-content text-base-content disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-sm"
                   aria-label="Next"
                >
                   <FaChevronRight className="text-lg" />
@@ -123,12 +123,12 @@ const TopRatedCars = ({
             {[1, 2, 3, 4].map((i) => (
               <div
                 key={i}
-                className="min-w-[320px] w-[320px] h-[420px] rounded-3xl bg-slate-100 dark:bg-white/5 animate-pulse"
+                className="min-w-[320px] w-[320px] h-[420px] rounded-3xl bg-base-200 animate-pulse"
               />
             ))}
           </div>
         ) : error ? (
-          <div className="p-8 rounded-2xl bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20 text-red-600">
+          <div className="p-8 rounded-2xl bg-error/10 border border-error/20 text-error">
             Error loading cars: {error}
           </div>
         ) : (

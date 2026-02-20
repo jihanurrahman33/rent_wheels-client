@@ -73,7 +73,7 @@ const BrowseCars = () => {
 
   if (isLoading) {
       return (
-          <div className="min-h-screen flex items-center justify-center bg-base-100 dark:bg-black">
+          <div className="min-h-screen flex items-center justify-center bg-base-100">
               <span className="loading loading-spinner loading-lg text-primary"></span>
           </div>
       );
@@ -81,24 +81,24 @@ const BrowseCars = () => {
 
   if (isError) {
        return (
-          <div className="min-h-screen flex items-center justify-center bg-base-100 dark:bg-black">
+          <div className="min-h-screen flex items-center justify-center bg-base-100">
               <div className="text-center">
-                   <h2 className="text-2xl font-bold text-red-500 mb-2">Error Loading Fleet</h2>
-                   <p className="text-slate-500">Please try again later.</p>
+                   <h2 className="text-2xl font-bold text-error mb-2">Error Loading Fleet</h2>
+                   <p className="text-base-content/60">Please try again later.</p>
               </div>
           </div>
       );
   }
 
   return (
-    <div className="min-h-screen bg-base-100 dark:bg-black pb-24">
+    <div className="min-h-screen bg-base-100 pb-24">
       
       {/* 1. Page Header (Premium Hero Style) */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative bg-slate-900 dark:bg-black py-20 lg:py-28 overflow-hidden"
+        className="relative bg-slate-900 py-20 lg:py-28 overflow-hidden"
       >
          {/* Abstract Background Patterns */}
          <div className="absolute top-0 right-0 p-64 bg-primary/10 rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2" />
@@ -139,7 +139,7 @@ const BrowseCars = () => {
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ delay: 0.6, duration: 0.5 }}
-             className="glass-card p-4 rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-2xl flex flex-col md:flex-row gap-4 items-center justify-between"
+             className="glass-card p-4 rounded-2xl bg-base-100/80 backdrop-blur-xl border border-base-content/10 shadow-2xl flex flex-col md:flex-row gap-4 items-center justify-between"
         >
           
           {/* Search Input */}
@@ -150,13 +150,13 @@ const BrowseCars = () => {
               placeholder="Search by model, brand, or style..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-slate-100 dark:bg-white/5 border-none rounded-xl py-3.5 pl-12 pr-4 text-slate-900 dark:text-white placeholder:text-slate-500 focus:ring-2 focus:ring-primary/50 transition-all font-medium"
+              className="w-full bg-base-200 border-none rounded-xl py-3.5 pl-12 pr-4 text-base-content placeholder:text-base-content/50 focus:ring-2 focus:ring-primary/50 transition-all font-medium"
             />
           </div>
 
           {/* Sort & Filter Controls */}
           <div className="flex items-center gap-4 w-full md:w-auto">
-            <div className="flex items-center gap-2 px-4 py-3.5 bg-slate-100 dark:bg-white/5 rounded-xl text-slate-600 dark:text-slate-300 min-w-[180px]">
+            <div className="flex items-center gap-2 px-4 py-3.5 bg-base-200 rounded-xl text-base-content min-w-[180px]">
                <FaSortAmountDown className="text-slate-400" />
                <select 
                   value={sortOption} 
@@ -245,11 +245,11 @@ const BrowseCars = () => {
           ) : (
             /* 5. Empty State */
             <div className="flex flex-col items-center justify-center py-32 text-center opacity-70">
-              <div className="w-24 h-24 rounded-full bg-slate-100 dark:bg-white/5 flex items-center justify-center text-slate-300 dark:text-slate-600 mb-6">
+              <div className="w-24 h-24 rounded-full bg-base-200 flex items-center justify-center text-base-content/30 mb-6">
                 <FaCar className="text-5xl" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">No Vehicles Found</h3>
-              <p className="text-slate-500">Try adjusting your search terms or filters.</p>
+              <h3 className="text-2xl font-bold text-base-content mb-2">No Vehicles Found</h3>
+              <p className="text-base-content/60">Try adjusting your search terms or filters.</p>
               <button 
                 onClick={() => { setSearchTerm(""); setSortOption("default"); }}
                 className="mt-6 text-primary font-bold hover:underline"

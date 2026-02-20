@@ -275,7 +275,7 @@ const MyListing = () => {
                 </div>
                 
                 {/* Stats Cards */}
-                <div className="grid grid-cols-3 gap-4 w-full lg:w-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full lg:w-auto">
                     <div className="glass-card bg-base-200/50 p-4 rounded-2xl border border-base-content/5 shadow-sm text-center min-w-[120px]">
                         <div className="text-base-content/60 text-xs font-bold uppercase mb-1">Total Cars</div>
                         <div className="text-2xl font-bold text-base-content flex items-center justify-center gap-2">
@@ -319,6 +319,8 @@ const MyListing = () => {
             ) : (
                 /* 3. Data Table */
                 <div className="bg-base-100 rounded-3xl border border-base-content/10 overflow-hidden shadow-xl shadow-base-content/5">
+                    {/* Desktop Table */}
+                    <div className="hidden md:block">
                     <div className="overflow-x-auto">
                         <table className="w-full text-left border-collapse">
                             <thead>
@@ -406,6 +408,54 @@ const MyListing = () => {
                             </tbody>
                         </table>
                     </div>
+                    </div>
+
+                    {/* Mobile Card Layout */}
+                    <div className="md:hidden divide-y divide-base-content/5">
+                        {listingData.map((car) => (
+                            <div key={car._id} className="p-4 space-y-3">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-16 h-12 rounded-lg bg-base-200 overflow-hidden border border-base-content/5 shrink-0">
+                                        <img src={car.carImgUrl} alt={car.carName} className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="min-w-0 flex-1">
+                                        <div className="font-bold text-base-content truncate">{car.carName}</div>
+                                        <div className="text-xs text-base-content/60">{car.carType} • {car.location}</div>
+                                    </div>
+                                    <div className="text-right shrink-0">
+                                        <div className="font-bold text-base-content">৳{Number(car.rentPrice).toLocaleString()}</div>
+                                        <div className="text-xs text-base-content/60">per day</div>
+                                    </div>
+                                </div>
+                                <div className="flex items-center justify-between">
+                                    <button 
+                                        onClick={() => handleUpdateStatus(car)}
+                                        disabled={processingId === car._id}
+                                        className={`transition-transform active:scale-95 ${processingId === car._id ? 'opacity-50' : ''}`}
+                                    >
+                                        <StatusBadge status={car.carStatus} />
+                                    </button>
+                                    <div className="flex gap-2">
+                                        <button onClick={() => handleEdit(car._id)} className="w-9 h-9 rounded-lg bg-base-200 text-base-content/70 hover:bg-blue-500/10 hover:text-blue-500 flex items-center justify-center transition-all">
+                                            <FaEdit />
+                                        </button>
+                                        <button 
+                                            onClick={() => handleRemove(car._id)}
+                                            disabled={deletingId === car._id}
+                                            className="w-9 h-9 rounded-lg bg-base-200 text-base-content/70 hover:bg-red-500/10 hover:text-red-500 flex items-center justify-center transition-all"
+                                        >
+                                            {deletingId === car._id ? (
+                                                <span className="loading loading-spinner loading-xs"></span>
+                                            ) : (
+                                                <FaTrashAlt />
+                                            )}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
                     <div className="p-4 bg-base-200/30 border-t border-base-content/5 text-center text-xs text-base-content/60">
                         Showing all {listingData.length} records in your inventory.
                     </div>

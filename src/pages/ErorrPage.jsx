@@ -5,18 +5,18 @@ const ErorrPage = ({ code = 404, title = "Page not found", message }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 p-6">
-      <div className="w-full max-w-4xl bg-white dark:bg-gray-900 rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+    <div className="min-h-screen flex items-center justify-center bg-base-200 p-6">
+      <div className="w-full max-w-4xl bg-base-100 rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 border border-base-content/10">
         <div className="p-8 flex flex-col justify-center gap-6">
           <div className="flex items-center gap-4">
-            <div className="text-4xl font-extrabold text-blue-600 dark:text-blue-400">
+            <div className="text-4xl font-extrabold text-primary">
               {code}
             </div>
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
+              <h1 className="text-2xl md:text-3xl font-bold text-base-content">
                 {title}
               </h1>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+              <p className="text-sm text-base-content/60 mt-1">
                 {message ||
                   "Sorry — the page you are looking for doesn't exist or an error occurred."}
               </p>
@@ -43,16 +43,16 @@ const ErorrPage = ({ code = 404, title = "Page not found", message }) => {
             </a>
           </div>
 
-          <div className="text-xs text-gray-400 mt-4">
+          <div className="text-xs text-base-content/40 mt-4">
             Tip: Try refreshing the page or check the URL for typos.
           </div>
 
-          <div className="mt-4 text-sm text-gray-500">
+          <div className="mt-4 text-sm text-base-content/60">
             If the problem persists, please report it to support.
           </div>
         </div>
 
-        <div className="hidden md:flex items-center justify-center bg-gradient-to-tr from-blue-50 to-indigo-50 dark:from-transparent dark:to-transparent p-6">
+        <div className="hidden md:flex items-center justify-center bg-base-200 p-6">
           <svg
             width="320"
             height="240"

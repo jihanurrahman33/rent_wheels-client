@@ -138,22 +138,22 @@ const HomePage = () => {
 
       {/* Stats / Value Prop Strip */}
       <div className="relative -mt-20 z-20 max-w-7xl mx-auto px-6 mb-24">
-        <div className="glass-card bg-white/80 dark:bg-[#1e293b]/80 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-2xl rounded-3xl p-10 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center hover:transform hover:-translate-y-1 transition-transform duration-500">
-            <div className="space-y-1 border-r border-slate-200 dark:border-white/10 last:border-none">
+        <div className="glass-card bg-base-100/80 backdrop-blur-xl border border-base-content/10 shadow-2xl rounded-3xl p-10 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center hover:transform hover:-translate-y-1 transition-transform duration-500">
+            <div className="space-y-1 border-r border-base-content/10 last:border-none">
               <div className="text-4xl font-bold font-display text-primary">500+</div>
-              <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Premium Cars</div>
+              <div className="text-xs font-bold text-base-content/60 uppercase tracking-widest">Premium Cars</div>
             </div>
-            <div className="space-y-1 border-r border-slate-200 dark:border-white/10 last:border-none">
+            <div className="space-y-1 border-r border-base-content/10 last:border-none">
               <div className="text-4xl font-bold font-display text-primary">24/7</div>
-              <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Support</div>
+              <div className="text-xs font-bold text-base-content/60 uppercase tracking-widest">Support</div>
             </div>
-            <div className="space-y-1 border-r border-slate-200 dark:border-white/10 last:border-none">
+            <div className="space-y-1 border-r border-base-content/10 last:border-none">
               <div className="text-4xl font-bold font-display text-primary">100%</div>
-              <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Secure</div>
+              <div className="text-xs font-bold text-base-content/60 uppercase tracking-widest">Secure</div>
             </div>
             <div className="space-y-1">
               <div className="text-4xl font-bold font-display text-primary">5.0</div>
-              <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">User Rating</div>
+              <div className="text-xs font-bold text-base-content/60 uppercase tracking-widest">User Rating</div>
             </div>
         </div>
       </div>

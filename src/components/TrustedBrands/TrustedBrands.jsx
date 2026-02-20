@@ -35,7 +35,7 @@ const TrustedBrands = () => {
           {[...brands, ...brands, ...brands].map((brand, idx) => (
             <div
               key={idx}
-              className="group flex items-center gap-3 text-slate-300 dark:text-slate-700 hover:text-slate-800 dark:hover:text-white transition-all duration-500 cursor-default"
+              className="group flex items-center gap-3 text-base-content/30 hover:text-base-content transition-all duration-500 cursor-default"
             >
               <div className="text-5xl opacity-80 group-hover:opacity-100 transition-opacity drop-shadow-sm">{brand.icon}</div>
               <span className="text-2xl font-display font-bold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
@@ -49,7 +49,7 @@ const TrustedBrands = () => {
           {[...brands, ...brands, ...brands].map((brand, idx) => (
             <div
               key={idx}
-              className="group flex items-center gap-3 text-slate-300 dark:text-slate-700 hover:text-slate-800 dark:hover:text-white transition-all duration-500 cursor-default"
+              className="group flex items-center gap-3 text-base-content/30 hover:text-base-content transition-all duration-500 cursor-default"
             >
               <div className="text-5xl opacity-80 group-hover:opacity-100 transition-opacity drop-shadow-sm">{brand.icon}</div>
               <span className="text-2xl font-display font-bold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">

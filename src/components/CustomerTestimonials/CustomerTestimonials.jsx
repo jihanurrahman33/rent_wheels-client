@@ -74,17 +74,17 @@ const testimonials = [
 ];
 
 const TestimonialCard = ({ data }) => (
-  <div className="glass-card h-full flex flex-col p-10 relative rounded-[2rem] border border-white/60 dark:border-white/5 bg-white/60 dark:bg-white/5 backdrop-blur-2xl group hover:border-primary/20 dark:hover:border-primary/20 transition-all duration-500">
+  <div className="glass-card h-full flex flex-col p-10 relative rounded-[2rem] border border-base-content/10 bg-base-100/60 backdrop-blur-2xl group hover:border-primary/20 transition-all duration-500">
     <div className="absolute top-8 right-8 text-6xl text-primary/10 font-serif leading-none select-none">"</div>
     
     <div className="flex items-center gap-4 mb-8">
       <img
         src={data.avatar}
         alt={data.name}
-        className="w-16 h-16 rounded-full ring-4 ring-white dark:ring-white/10 object-cover shadow-lg"
+        className="w-16 h-16 rounded-full ring-4 ring-base-100 object-cover shadow-lg"
       />
       <div>
-        <h4 className="font-bold text-slate-900 dark:text-white text-lg font-display">
+        <h4 className="font-bold text-base-content text-lg font-display">
           {data.name}
         </h4>
         <p className="text-sm text-primary font-bold uppercase tracking-wider">
@@ -93,11 +93,11 @@ const TestimonialCard = ({ data }) => (
       </div>
     </div>
 
-    <p className="text-xl text-slate-600 dark:text-slate-300 italic mb-8 flex-grow leading-relaxed font-light relative z-10">
+    <p className="text-xl text-base-content/70 italic mb-8 flex-grow leading-relaxed font-light relative z-10">
       {data.review}
     </p>
 
-    <div className="flex items-center justify-between pt-6 border-t border-slate-200/50 dark:border-white/5">
+    <div className="flex items-center justify-between pt-6 border-t border-base-content/10">
        <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Verified Renter</span>
       <div className="flex text-yellow-400 text-sm gap-1">
         {[...Array(5)].map((_, i) => (
@@ -116,10 +116,10 @@ export default function CustomerTestimonials() {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl font-display font-bold text-slate-900 dark:text-white">
+          <h2 className="text-4xl font-display font-bold text-base-content">
             Driven by <span className="text-primary">Trust</span>
           </h2>
-          <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-lg font-light">
+          <p className="text-base-content/60 max-w-2xl mx-auto text-lg font-light">
             Hear from our community of happy drivers who have experienced the
             journey with Rent Wheels.
           </p>

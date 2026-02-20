@@ -102,19 +102,19 @@ const CarDetails = () => {
   const FeatureItem = ({ icon: Icon, label, value }) => (
     <motion.div 
       whileHover={{ y: -5 }}
-      className="flex flex-col items-center justify-center p-6 rounded-2xl bg-white dark:bg-white/5 border border-slate-100 dark:border-white/10 shadow-sm hover:shadow-md transition-all"
+      className="flex flex-col items-center justify-center p-6 rounded-2xl bg-base-100 border border-base-content/10 shadow-sm hover:shadow-md transition-all"
     >
       <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-3">
         <Icon className="text-xl" />
       </div>
       <span className="text-xs text-slate-500 uppercase font-bold tracking-wider mb-1">{label}</span>
-      <span className="text-lg font-bold text-slate-900 dark:text-white capitalize">{value}</span>
+      <span className="text-lg font-bold text-base-content capitalize">{value}</span>
     </motion.div>
   );
 
   if (isCarLoading) {
        return (
-          <div className="min-h-screen flex items-center justify-center bg-base-100 dark:bg-black">
+          <div className="min-h-screen flex items-center justify-center bg-base-100">
               <span className="loading loading-spinner loading-lg text-primary"></span>
           </div>
       );
@@ -125,7 +125,7 @@ const CarDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-black pb-24 relative overflow-x-hidden">
+    <div className="min-h-screen bg-base-200 pb-24 relative overflow-x-hidden">
       {/* 1. Immersive Hero Section */}
       <div className="relative h-[60vh] w-full overflow-hidden">
         <div className="absolute inset-0 bg-slate-900">
@@ -138,7 +138,7 @@ const CarDetails = () => {
               className="w-full h-full object-cover opacity-80"
             />
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-50 dark:from-black via-transparent to-black/30" />
+            <div className="absolute inset-0 bg-gradient-to-t from-base-200 via-transparent to-black/30" />
         </div>
         
         <div className="absolute bottom-0 left-0 w-full p-8 lg:p-16 z-20">
@@ -190,8 +190,8 @@ const CarDetails = () => {
                 
                 {/* Specs Grid */}
                 <section>
-                    <h3 className="text-2xl font-display font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3">
-                        <FaCogs className="text-slate-400" /> Specifications
+                    <h3 className="text-2xl font-display font-bold text-base-content mb-6 flex items-center gap-3">
+                        <FaCogs className="text-base-content/40" /> Specifications
                     </h3>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <FeatureItem icon={FaChair} label="Seats" value={carData.features?.seats || "4 Adults"} />
@@ -202,26 +202,26 @@ const CarDetails = () => {
                 </section>
 
                 {/* Description */}
-                <section className="prose dark:prose-invert max-w-none">
-                     <h3 className="text-2xl font-display font-bold text-slate-900 dark:text-white mb-4">
+                <section className="prose max-w-none">
+                     <h3 className="text-2xl font-display font-bold text-base-content mb-4">
                         Vehicle Overview
                     </h3>
-                    <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
+                    <p className="text-base-content/70 text-lg leading-relaxed">
                         {carData.description || "Experience the pinnacle of automotive engineering. This vehicle combines luxury, performance, and cutting-edge technology to deliver an unforgettable driving experience. Perfect for executive travel, weekend getaways, or special occasions."}
                     </p>
                 </section>
 
                  {/* Owner / Provider Profile */}
-                <section className="bg-white dark:bg-white/5 p-8 rounded-3xl border border-slate-200 dark:border-white/10 flex items-center gap-6">
+                <section className="bg-base-100 p-8 rounded-3xl border border-base-content/10 flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center text-white text-2xl font-bold shadow-lg">
                         {(carData.providerName || carData.providerEmail || "O")[0].toUpperCase()}
                     </div>
                     <div>
                          <div className="text-xs font-bold uppercase text-primary mb-1 tracking-wider">Verified Owner</div>
-                         <div className="text-xl font-bold text-slate-900 dark:text-white">
+                         <div className="text-xl font-bold text-base-content">
                             {carData.providerName || "Premium Partner"}
                          </div>
-                         <div className="text-slate-500 dark:text-slate-400 text-sm">
+                         <div className="text-base-content/60 text-sm">
                             Member since 2024 • 100% Response Rate
                          </div>
                     </div>
@@ -236,14 +236,14 @@ const CarDetails = () => {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="glass-card bg-white/80 dark:bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-slate-200 dark:border-white/10 shadow-2xl shadow-slate-200/50 dark:shadow-none"
+                        className="glass-card bg-base-100/80 backdrop-blur-xl p-8 rounded-3xl border border-base-content/10 shadow-2xl"
                     >
                         
-                        <div className="flex justify-between items-end mb-8 border-b border-slate-100 dark:border-white/10 pb-8">
+                        <div className="flex justify-between items-end mb-8 border-b border-base-content/10 pb-8">
                             <div>
                                 <p className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-1">Daily Rate</p>
                                 <div className="flex items-baseline gap-1">
-                                    <span className="text-4xl font-bold text-slate-900 dark:text-white">৳{carData.rentPrice}</span>
+                                    <span className="text-4xl font-bold text-base-content">৳{carData.rentPrice}</span>
                                     <span className="text-slate-500">/day</span>
                                 </div>
                             </div>
@@ -258,14 +258,14 @@ const CarDetails = () => {
                          <div className="space-y-4 mb-8">
                             <div className="flex justify-between text-sm">
                                 <span className="text-slate-500">Service Fee</span>
-                                <span className="font-bold text-slate-900 dark:text-white">৳0</span>
+                                <span className="font-bold text-base-content">৳0</span>
                             </div>
                              <div className="flex justify-between text-sm">
                                 <span className="text-slate-500">Insurance</span>
-                                <span className="font-bold text-slate-900 dark:text-white dark:text-emerald-400 text-emerald-600">Included</span>
+                                <span className="font-bold text-emerald-600">Included</span>
                             </div>
-                            <div className="flex justify-between text-sm pt-4 border-t border-slate-100 dark:border-white/10">
-                                <span className="font-bold text-slate-900 dark:text-white">Total (1 Day)</span>
+                            <div className="flex justify-between text-sm pt-4 border-t border-base-content/10">
+                                <span className="font-bold text-base-content">Total (1 Day)</span>
                                 <span className="font-bold text-primary text-lg">৳{carData.rentPrice}</span>
                             </div>
                         </div>
@@ -275,7 +275,7 @@ const CarDetails = () => {
                             disabled={bookingMutation.isPending || isUnavailable}
                             className={`w-full py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 ${
                                 isUnavailable
-                                ? "bg-slate-200 dark:bg-slate-800 text-slate-400 cursor-not-allowed shadow-none"
+                                ? "bg-base-200 text-base-content/40 cursor-not-allowed shadow-none"
                                 : "bg-primary text-white shadow-primary/30"
                             }`}
                         >
@@ -300,8 +300,8 @@ const CarDetails = () => {
 
         {/* Similar Cars Section */}
         {relatedCars.length > 0 && (
-            <div className="mt-24 border-t border-slate-200 dark:border-white/10 pt-16">
-                <h3 className="text-3xl font-display font-bold text-slate-900 dark:text-white mb-8">
+            <div className="mt-24 border-t border-base-content/10 pt-16">
+                <h3 className="text-3xl font-display font-bold text-base-content mb-8">
                     You Might Also Like
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

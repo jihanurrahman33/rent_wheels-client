@@ -10,7 +10,7 @@ const Banner = () => {
           'url("https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?q=80&w=2940&auto=format&fit=crop")',
       }}
     >
-      <div className="absolute inset-0 bg-black/50 dark:bg-black/70" />
+      <div className="absolute inset-0 bg-black/50" />
 
       <div className="relative z-10 container mx-auto px-6 text-center">
         <div className="glass p-10 md:p-16 rounded-3xl max-w-4xl mx-auto border border-white/20">

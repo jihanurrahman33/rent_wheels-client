@@ -195,7 +195,7 @@ const MyBookings = () => {
 
             {/* Error State */}
             {error && (
-                 <div className="mb-8 p-4 bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-900/30 rounded-xl text-red-600 dark:text-red-400 text-center text-sm">
+                 <div className="mb-8 p-4 bg-error/10 border border-error/20 rounded-xl text-error text-center text-sm">
                     {error} <button onClick={() => window.location.reload()} className="underline ml-2 font-bold">Retry</button>
                 </div>
             )}
@@ -222,6 +222,8 @@ const MyBookings = () => {
             ) : (
                 /* Bookings Table */
                 <div className="bg-base-100 rounded-3xl border border-base-content/10 overflow-hidden shadow-xl shadow-base-content/5">
+                    {/* Desktop Table */}
+                    <div className="hidden md:block">
                     <table className="w-full text-left border-collapse">
                         <thead>
                             <tr className="bg-base-200/50 border-b border-base-content/5 text-xs uppercase tracking-wider text-base-content/60 font-bold">
@@ -284,7 +286,6 @@ const MyBookings = () => {
                                     {/* Actions */}
                                     <td className="p-6 text-right">
                                         <div className="flex items-center justify-end gap-3">
-                                            {/* Cancel Button (Only if confirmed/pending) */}
                                             {(!booking.status || booking.status === 'confirmed') && (
                                                 <button 
                                                     onClick={() => performBookingAction(booking._id, "cancel")}
@@ -294,8 +295,6 @@ const MyBookings = () => {
                                                     {processingId === booking._id ? "..." : "Cancel"}
                                                 </button>
                                             )}
-
-                                            {/* Complete Button logic */}
                                             {(!booking.status || booking.status === 'confirmed') && (
                                                  <button 
                                                     onClick={() => performBookingAction(booking._id, "complete")}
@@ -312,6 +311,54 @@ const MyBookings = () => {
                             ))}
                         </tbody>
                     </table>
+                    </div>
+
+                    {/* Mobile Card Layout */}
+                    <div className="md:hidden divide-y divide-base-content/5">
+                        {bookingData.map((booking) => (
+                            <div key={booking._id} className="p-4 space-y-4">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-20 h-14 rounded-lg bg-base-200 overflow-hidden border border-base-content/5 shrink-0">
+                                        <img src={booking.carImgUrl} alt={booking.carName} className="w-full h-full object-cover" />
+                                    </div>
+                                    <div className="min-w-0">
+                                        <div className="font-bold text-base-content truncate">{booking.carName}</div>
+                                        <div className="text-xs text-base-content/60">{booking.carType}</div>
+                                    </div>
+                                </div>
+                                <div className="flex items-center justify-between text-sm">
+                                    <div className="flex items-center gap-2 text-base-content/60">
+                                        <FaCalendarCheck className="text-base-content/40" />
+                                        <span>{booking.bookingDate ? new Date(booking.bookingDate).toLocaleDateString() : "Just Now"}</span>
+                                    </div>
+                                    <div className="font-bold text-base-content">৳{booking.rentPrice}<span className="text-xs text-base-content/60 font-normal">/day</span></div>
+                                </div>
+                                <div className="flex items-center justify-between">
+                                    <StatusBadge status={booking.status} />
+                                    <div className="flex gap-2">
+                                        {(!booking.status || booking.status === 'confirmed') && (
+                                            <>
+                                                <button 
+                                                    onClick={() => performBookingAction(booking._id, "cancel")}
+                                                    disabled={processingId === booking._id}
+                                                    className="px-3 py-1.5 rounded-lg text-xs font-bold bg-base-100 border border-base-content/10 text-base-content/70 hover:bg-red-500/10 hover:text-red-500 transition-all"
+                                                >
+                                                    {processingId === booking._id ? "..." : "Cancel"}
+                                                </button>
+                                                <button 
+                                                    onClick={() => performBookingAction(booking._id, "complete")}
+                                                    disabled={processingId === booking._id}
+                                                    className="px-3 py-1.5 rounded-lg text-xs font-bold bg-primary text-white shadow-sm hover:scale-[1.02] transition-all"
+                                                >
+                                                    Complete
+                                                </button>
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             )}
         </div>
